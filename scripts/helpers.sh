@@ -38,5 +38,16 @@ battery_status() {
 		acpi -b | awk '{gsub(/,/, ""); print tolower($3); exit}'
 	elif command_exists "termux-battery-status"; then
 		termux-battery-status | jq -r '.status' | awk '{printf("%s%", tolower($1))}'
+  else
+    for battery in "BAT0" "BAT1" "battery"; do
+      if [ -d "/sys/class/power_supply/${battery}" ]; then
+        bat_status=$(cat /sys/class/power_supply/${battery}/status | awk '{print tolower($0)}')
+        if [[ "$bat_status" =~ (full|not charging) ]]; then
+          bat_status="charged"
+        fi
+        echo $bat_status
+        break
+      fi
+    done
 	fi
 }
