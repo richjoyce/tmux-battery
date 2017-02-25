@@ -16,8 +16,8 @@ battery_commands=(
 	"#($CURRENT_DIR/scripts/battery_percentage.sh)"
 	"#($CURRENT_DIR/scripts/battery_remain.sh)"
 	"#($CURRENT_DIR/scripts/battery_icon.sh)"
-	"#($CURRENT_DIR/scripts/battery_status_bg.sh)"
-	"#($CURRENT_DIR/scripts/battery_status_fg.sh)"
+	"#($CURRENT_DIR/scripts/battery_color.sh bg)"
+	"#($CURRENT_DIR/scripts/battery_color.sh fg)"
 	"#($CURRENT_DIR/scripts/battery_graph.sh)"
 )
 
